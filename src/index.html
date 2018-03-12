@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-route/angular-route.min.js"></script>
+    <script src="../node_modules/lodash/dist/lodash.min.js"></script>
+    <script src="./app.js"></script>
+    <script src="./controllers/QuestionMakerController.js"></script>
+</head>
+<body ng-app="quizMaker">
+
+<div ng-controller="QuestionMakerController">
+    Select Your Question
+    <ul>
+        <li ng-repeat="question in questions" ng-click="openDetailedQuestion(question)">
+            {{question.value}}
+        </li>
+
+    </ul>
+    <button ng-click="addQuestion()">Add Question</button>
+    <button>Delete Question</button>
+
+    <div ng-show="selectedQuestion && selectedQuestion.value">
+        Design Question {{1}}
+
+        Question: <input ng-model="selectedQuestion.value" value="selectedQuestion.value"/>
+
+        Options:
+        <ui>
+            <li ng-repeat="option in selectedQuestion.options track by $index">
+                Option {{$index}} : <input ng-model="option.value" value="option.value"/>
+            </li>
+
+        </ui>
+    </div>
+</div>
+</body>
+</html>
